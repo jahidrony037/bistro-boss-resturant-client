@@ -3,7 +3,9 @@ import Banner from "../Banner/Banner";
 import CallUsBanner from "../CallUsBanner/CallUsBanner";
 import Category from "../Category/Category";
 import ChefRecomendations from "../ChefRecomendations/ChefRecomendations";
+import Featured from "../Featured/Featured";
 import PopularMenu from "../PopularMenu/PopularMenu";
+import Testimonials from "../Testimonials/Testimonials";
 
 const Home = () => {
   const title = "Bistro Boss";
@@ -17,6 +19,8 @@ const Home = () => {
       <PopularMenu />
       <CallUsBanner />
       <ChefRecomendations />
+      <Featured />
+      <Testimonials />
     </div>
   );
 };
