@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
-
+import "./Navbar.css";
 const Navbar = () => {
   const navLinks = (
     <>
       <li>
-        <NavLink to="/home" className="uppercase ">
+        <NavLink to="/" className="uppercase ">
           Home
         </NavLink>
       </li>

@@ -1,0 +1,7 @@
+.active {
+  background: none !important;
+  color: #eeff25 !important;
+}
+.active:hover {
+  background: none !important;
+}

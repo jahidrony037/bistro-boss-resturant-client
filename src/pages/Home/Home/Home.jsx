@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import CommonBanner from "../../../components/shared/CommonBanner/CommonBanner";
 import Banner from "../Banner/Banner";
 import CallUsBanner from "../CallUsBanner/CallUsBanner";
@@ -13,9 +14,17 @@ const Home = () => {
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, libero accusamus laborum deserunt ratione dolor officiis praesentium! Deserunt magni aperiam dolor eius dolore at, nihil iusto ducimus incidunt quibusdam nemo.";
   return (
     <div className="space-y-[96px]">
+      <Helmet>
+        <title>Bistro-Boss | Home</title>
+      </Helmet>
       <Banner />
       <Category />
-      <CommonBanner title={title} description={description} />
+      <CommonBanner
+        title={title}
+        description={description}
+        bgColor="#FFF"
+        textColor="#151515"
+      />
       <PopularMenu />
       <CallUsBanner />
       <ChefRecomendations />
