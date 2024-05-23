@@ -24,8 +24,13 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/shop" className="uppercase">
+        <NavLink to="/order/salads" className="uppercase">
           our shop
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/login" className="uppercase">
+          Login
         </NavLink>
       </li>
     </>
@@ -52,14 +57,14 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 flex gap-3"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow  rounded-box w-52 flex gap-3"
           >
             {navLinks}
           </ul>
         </div>
         <a className="btn btn-ghost text-xl">Bistro-Boss</a>
       </div>
-      <div className="navbar-end hidden lg:flex">
+      <div className="navbar-end w-full hidden lg:flex">
         <ul className="menu menu-horizontal px-1 flex gap-3">{navLinks}</ul>
       </div>
     </div>

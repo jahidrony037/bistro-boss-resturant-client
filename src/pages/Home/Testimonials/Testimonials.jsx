@@ -13,7 +13,7 @@ const Testimonials = () => {
   const [ratings, setRatings] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get("reviews.json");
+      const result = await axios.get("http://localhost:5000/reviews");
       setRatings(result.data);
     };
     fetchData();

@@ -5,7 +5,9 @@ const CommonBanner = ({ title, description, bgColor, textColor }) => {
       <div
         className={`bg-[${bgColor}]  mx-[18%] py-[60px] px-[45px] text-[${textColor}]`}
       >
-        <h2 className=" font-normal text-[45px] text-center">{title}</h2>
+        <h2 className=" font-normal text-[45px] text-center uppercase">
+          {title}
+        </h2>
         <p className="text-[16px] text-center font-normal  w-full mx-auto">
           {description}
         </p>
