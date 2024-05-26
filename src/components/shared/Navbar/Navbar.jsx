@@ -1,9 +1,12 @@
+import { FaOpencart } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
+import useCart from "../../../hooks/useCart";
 import "./Navbar.css";
 const Navbar = () => {
   const { user, logOut } = useAuth() || {};
+  const [cart] = useCart() || [];
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -34,11 +37,11 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      <li>
+      {/* <li>
         <NavLink to="/contact" className="uppercase">
           Contact US
         </NavLink>
-      </li>
+      </li> */}
       <li>
         <NavLink to="/dashboard" className="uppercase">
           Dashboard
@@ -54,22 +57,29 @@ const Navbar = () => {
           our shop
         </NavLink>
       </li>
+      <li>
+        <button className="btn flex">
+          <FaOpencart size={35} />
+          <div className="badge badge-secondary">+{cart.length}</div>
+        </button>
+      </li>
       {user ? (
-        <div className="flex items-center gap-2">
-          <>
+        <li>
+          <div className="flex items-center gap-2">
             <button
               onClick={handleLogOut}
-              className="uppercase text-white bg-none btn"
+              className="uppercase text-white bg-none"
             >
               sign OUT
             </button>
-          </>
-          <div className="avatar">
-            <div className="w-[44px] ring-2 rounded-full">
-              <img src={user?.photoURL} alt={`${user?.displayName} image`} />
+
+            <div className="avatar">
+              <div className="w-[44px] ring-2 rounded-full">
+                <img src={user?.photoURL} alt={`${user?.displayName} image`} />
+              </div>
             </div>
           </div>
-        </div>
+        </li>
       ) : (
         <li>
           <NavLink to="/login" className="uppercase">
@@ -109,7 +119,9 @@ const Navbar = () => {
         <a className="btn btn-ghost text-xl">Bistro-Boss</a>
       </div>
       <div className="navbar-end w-full hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 flex gap-3">{navLinks}</ul>
+        <ul className="menu menu-horizontal px-1 flex gap-3 items-center justify-between">
+          {navLinks}
+        </ul>
       </div>
     </div>
   );
