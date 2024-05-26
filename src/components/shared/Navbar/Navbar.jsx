@@ -1,6 +1,32 @@
 import { NavLink } from "react-router-dom";
+import Swal from "sweetalert2";
+import useAuth from "../../../hooks/useAuth";
 import "./Navbar.css";
 const Navbar = () => {
+  const { user, logOut } = useAuth() || {};
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        Swal.fire({
+          title: "User LogOUT Successful",
+          showClass: {
+            popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `,
+          },
+          hideClass: {
+            popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `,
+          },
+        });
+      })
+      .catch((err) => console.log(err.message));
+  };
   const navLinks = (
     <>
       <li>
@@ -28,11 +54,29 @@ const Navbar = () => {
           our shop
         </NavLink>
       </li>
-      <li>
-        <NavLink to="/login" className="uppercase">
-          Login
-        </NavLink>
-      </li>
+      {user ? (
+        <div className="flex items-center gap-2">
+          <>
+            <button
+              onClick={handleLogOut}
+              className="uppercase text-white bg-none btn"
+            >
+              sign OUT
+            </button>
+          </>
+          <div className="avatar">
+            <div className="w-[44px] ring-2 rounded-full">
+              <img src={user?.photoURL} alt={`${user?.displayName} image`} />
+            </div>
+          </div>
+        </div>
+      ) : (
+        <li>
+          <NavLink to="/login" className="uppercase">
+            Login
+          </NavLink>
+        </li>
+      )}
     </>
   );
   return (

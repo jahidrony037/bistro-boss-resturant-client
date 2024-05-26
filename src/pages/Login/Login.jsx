@@ -1,14 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   LoadCanvasTemplate,
   loadCaptchaEnginge,
   validateCaptcha,
 } from "react-simple-captcha";
+import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const { loginUser } = useAuth() || {};
+  const from = location.state?.from?.pathname || "/";
 
   useEffect(() => {
     loadCaptchaEnginge(6, "white", "black", "upper");
@@ -19,7 +23,7 @@ const Login = () => {
   const captchaRef = useRef(null);
 
   const handleValidateCaptcha = () => {
-    console.log("handleValidate");
+    // console.log("handleValidate");
     const captchaValue = captchaRef.current.value;
     if (validateCaptcha(captchaValue) === true) {
       setValid(true);
@@ -36,12 +40,19 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    // console.log(email, password);
 
     loginUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        // console.log(user);
+        if (user) {
+          Swal.fire({
+            title: "User Login Successful",
+            icon: "success",
+          });
+          navigate(from, { replace: true });
+        }
       })
       .catch((err) => console.log(err.message));
 
