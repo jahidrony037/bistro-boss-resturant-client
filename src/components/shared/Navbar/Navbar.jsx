@@ -43,7 +43,7 @@ const Navbar = () => {
         </NavLink>
       </li> */}
       <li>
-        <NavLink to="/dashboard" className="uppercase">
+        <NavLink to="dashboard" className="uppercase">
           Dashboard
         </NavLink>
       </li>
@@ -58,10 +58,12 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <button className="btn flex">
-          <FaOpencart size={35} />
-          <div className="badge badge-secondary">+{cart.length}</div>
-        </button>
+        <NavLink to="dashboard/cart">
+          <button className="btn flex">
+            <FaOpencart size={35} />
+            <div className="badge badge-secondary">+{cart.length}</div>
+          </button>
+        </NavLink>
       </li>
       {user ? (
         <li>
